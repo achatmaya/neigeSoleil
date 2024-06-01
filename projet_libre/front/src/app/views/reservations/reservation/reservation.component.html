@@ -1,0 +1,20 @@
+<div class="reservation-container">
+    <div *ngIf="reservations.length === 0">
+      <p>Aucune réservation en cours.</p>
+    </div>
+  
+    <div class="reservation-list">
+      <div *ngFor="let reservation of reservations" class="col-md-4 mb-4">
+        <div class="card" (click)="viewReservationDetails(reservation)">
+          <div class="card-body">
+            <h5 class="card-title">{{ reservation.status }}</h5>
+            <p class="card-text"><strong>Date de réservation:</strong> {{ reservation.reservationDate | date }}</p>
+            <p class="card-text"><strong>Date de début:</strong> {{ reservation.startDate | date }}</p>
+            <p class="card-text"><strong>Nombre de personnes:</strong> {{ reservation.numberOfPeople }}</p>
+            <p class="card-text"><strong>Montant</strong> {{ reservation.amount}}€</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,103 @@
+<div class="auth-container">
+  <h2 *ngIf="isLoginMode">Connexion</h2>
+  <h2 *ngIf="!isLoginMode">Inscription</h2>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+  <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+    <div class="form-group" [ngClass]="{'has-error': usernameModel.invalid && (usernameModel.dirty || usernameModel.touched)}">
+      <label for="username">Nom d'utilisateur </label>
+      <input type="text" id="username" [(ngModel)]="username" name="username" required #usernameModel="ngModel">
+      <div *ngIf="usernameModel.invalid && (usernameModel.dirty || usernameModel.touched)" class="text-danger">
+        Le nom d'utilisateur est obligatoire.
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': passwordModel.invalid && (passwordModel.dirty || passwordModel.touched)}">
+      <label for="password">Mot de passe </label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required #passwordModel="ngModel">
+      <div *ngIf="passwordModel.invalid && (passwordModel.dirty || passwordModel.touched)" class="text-danger">
+        Le mot de passe est obligatoire.
+      </div>
+    </div>
+    <div *ngIf="!isLoginMode">
+      <div class="form-group" [ngClass]="{'has-error': lastNameModel.invalid && (lastNameModel.dirty || lastNameModel.touched)}">
+        <label for="lastName">Nom <span class="required">*</span></label>
+        <input type="text" id="lastName" [(ngModel)]="lastName" name="lastName" required #lastNameModel="ngModel">
+        <div *ngIf="lastNameModel.invalid && (lastNameModel.dirty || lastNameModel.touched)" class="text-danger">
+          Le nom est obligatoire.
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': firstNameModel.invalid && (firstNameModel.dirty || firstNameModel.touched)}">
+        <label for="firstName">Prénom <span class="required">*</span></label>
+        <input type="text" id="firstName" [(ngModel)]="firstName" name="firstName" required #firstNameModel="ngModel">
+        <div *ngIf="firstNameModel.invalid && (firstNameModel.dirty || firstNameModel.touched)" class="text-danger">
+          Le prénom est obligatoire.
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': emailModel.invalid && (emailModel.dirty || emailModel.touched)}">
+        <label for="email">Email <span class="required">*</span></label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" required #emailModel="ngModel">
+        <div *ngIf="emailModel.invalid && (emailModel.dirty || emailModel.touched)" class="text-danger">
+          L'email est obligatoire.
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': phoneNumberModel.invalid && (phoneNumberModel.dirty || phoneNumberModel.touched)}">
+        <label for="phoneNumber">Numéro de téléphone <span class="required">*</span></label>
+        <input type="text" id="phoneNumber" [(ngModel)]="phoneNumber" name="phoneNumber" required #phoneNumberModel="ngModel">
+        <div *ngIf="phoneNumberModel.invalid && (phoneNumberModel.dirty || phoneNumberModel.touched)" class="text-danger">
+          Le numéro de téléphone est obligatoire.
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': birthDateModel.invalid && (birthDateModel.dirty || birthDateModel.touched)}">
+        <label for="birthDate">Date de naissance <span class="required">*</span></label>
+        <input type="date" id="birthDate" [(ngModel)]="birthDate" name="birthDate" required #birthDateModel="ngModel">
+        <div *ngIf="birthDateModel.invalid && (birthDateModel.dirty || birthDateModel.touched)" class="text-danger">
+          La date de naissance est obligatoire.
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': addressModel.invalid && (addressModel.dirty || addressModel.touched)}">
+        <label for="address">Adresse <span class="required">*</span></label>
+        <input type="text" id="address" [(ngModel)]="address" name="address" required #addressModel="ngModel">
+        <div *ngIf="addressModel.invalid && (addressModel.dirty || addressModel.touched)" class="text-danger">
+          L'adresse est obligatoire.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="addressComplement">Complément d'adresse</label>
+        <input type="text" id="addressComplement" [(ngModel)]="addressComplement" name="addressComplement">
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': postalCodeModel.invalid && (postalCodeModel.dirty || postalCodeModel.touched)}">
+        <label for="postalCode">Code postal <span class="required">*</span></label>
+        <input type="text" id="postalCode" [(ngModel)]="postalCode" name="postalCode" required #postalCodeModel="ngModel">
+        <div *ngIf="postalCodeModel.invalid && (postalCodeModel.dirty || postalCodeModel.touched)" class="text-danger">
+          Le code postal est obligatoire.
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': cityModel.invalid && (cityModel.dirty || cityModel.touched)}">
+        <label for="city">Ville <span class="required">*</span></label>
+        <input type="text" id="city" [(ngModel)]="city" name="city" required #cityModel="ngModel">
+        <div *ngIf="cityModel.invalid && (cityModel.dirty || cityModel.touched)" class="text-danger">
+          La ville est obligatoire.
+        </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': countryModel.invalid && (countryModel.dirty || countryModel.touched)}">
+        <label for="country">Pays <span class="required">*</span></label>
+        <input type="text" id="country" [(ngModel)]="country" name="country" required #countryModel="ngModel">
+        <div *ngIf="countryModel.invalid && (countryModel.dirty || countryModel.touched)" class="text-danger">
+          Le pays est obligatoire.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="owner">Propriétaire</label>
+        <input type="checkbox" id="owner" [(ngModel)]="isOwner" name="isOwner">
+      </div>
+    </div>
+    <button type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? 'Se connecter' : 'S\'inscrire' }}</button>
+  </form>
+  <button class="switch-mode" (click)="onSwitchMode()">
+    {{ isLoginMode ? 'Passer à l\'inscription' : 'Passer à la connexion' }}
+  </button>
+</div>

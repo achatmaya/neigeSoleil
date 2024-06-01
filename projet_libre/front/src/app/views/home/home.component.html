@@ -1,0 +1,39 @@
+<div class="home-container">
+  <h2>Liste des Appartements</h2>
+
+  <form (ngSubmit)="onSearch()" class="search-form">
+    <div class="form-group">
+      <label for="size">Taille minimum (m²):</label>
+      <input id="size" type="number" [(ngModel)]="searchCriteria.size" name="size" class="form-control">
+    </div>
+    <div class="form-group mr-5">
+      <label for="capacity">Capacité minimum:</label>
+      <input id="capacity" type="number" [(ngModel)]="searchCriteria.capacity" name="capacity" class="form-control">
+    </div>
+    <div class="form-group mr-4">
+      <button type="submit" class="button button-primary">Rechercher</button>
+    </div>
+  </form>
+
+  <div *ngIf="filteredAppartements.length === 0">
+    <p>Aucun appartement disponible pour le moment.</p>
+  </div>
+
+  <div class="apartment-list row">
+    <div *ngFor="let appartement of filteredAppartements" class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-img-top" [style.background-image]="'url(' + getFirstImageUrl(appartement.imageUrls) + ')'" style="height: 200px; background-size: cover; background-position: center;"></div>
+        <div class="card-body">
+          <h5 class="card-title">{{ appartement.apartmentType }} - {{ appartement.area }} m²</h5>
+          <p class="card-text"><strong>Adresse:</strong> {{ appartement.address }}</p>
+          <p class="card-text"><strong>Code postal:</strong> {{ appartement.postalCode }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <button class="button button-primary" [routerLink]="['/appartement/'+appartement.id]" routerLinkActive="router-link-active" >Voir</button>
+            <button *ngIf="authService.asRoleAsync('ROLE_OWNER')" class="button button-warning" (click)="openUpdateAppartementModal(appartement)">Modifier</button>
+            <button *ngIf="authService.asRoleAsync('ROLE_USER')" class="button button-success" (click)="openCreateReservationModal(appartement)">Réserver</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

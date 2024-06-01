@@ -1,0 +1,100 @@
+.user-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.user-table {
+  width: 100%;
+  max-width: 600px;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.user-table th, .user-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #f2f2f2;
+}
+
+.user-table tr {
+  cursor: pointer;
+}
+
+.user-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.user-details {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+}
+
+.user-details h3 {
+  margin-top: 20px;
+}
+
+.user-details label {
+  display: block;
+  margin-top: 10px;
+}
+
+.user-details input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.user-details button {
+  padding: 8px 12px;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.user-details button:hover {
+  background-color: #45a049;
+}
+
+.user-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.user-details ul li {
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.user-details ul li div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-details ul li button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.user-details ul li button:hover {
+  background-color: #007B9A;
+}

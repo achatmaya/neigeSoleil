@@ -1,0 +1,51 @@
+.apartment-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  .has-error .form-control {
+    border-color: red;
+  }
+  
+  .text-danger {
+    color: red;
+  }
+  
+  
+  .apartment-form {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .apartment-form label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .apartment-form input,
+  .apartment-form textarea,
+  .apartment-form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .apartment-form button {
+    padding: 8px 12px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .apartment-form button:hover {
+    background-color: #45a049;
+  }
+  

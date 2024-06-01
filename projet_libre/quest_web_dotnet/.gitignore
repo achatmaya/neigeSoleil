@@ -1,0 +1,19 @@
+# Ignore all files in the Migrations folder
+**/Migrations/
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+.idea/
+*.csproj.user
+*.vcxproj.user
+*.msi
+*.msm
+*.msp
+*.pdb
+obj/*
+bin/*
+projet_libre/quest_web_dotnet/bin/Debug/net6.0/quest_web.dll

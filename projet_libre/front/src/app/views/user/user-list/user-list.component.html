@@ -1,0 +1,79 @@
+<div class="user-list-container">
+  <h2>Users</h2>
+  <table class="user-table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users" (click)="onSelect(user)">
+        <td>{{ user.username }}</td>
+        <td>{{ user.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedUser" class="user-details">
+    <h2>{{ isEditingUser ? 'Edit User' : 'User Details' }}</h2>
+
+    <div *ngIf="!isEditingUser">
+      <p>Username: {{ selectedUser.username }}</p>
+      <p>Last Name: {{ selectedUser.lastName }}</p>
+      <p>First Name: {{ selectedUser.firstName }}</p>
+      <p>Email: {{ selectedUser.email }}</p>
+      <p>Phone Number: {{ selectedUser.phoneNumber }}</p>
+      <p>Birth Date: {{ selectedUser.birthDate }}</p>
+      <p>Address: {{ selectedUser.address }}</p>
+      <p>Address Complement: {{ selectedUser.addressComplement }}</p>
+      <p>Postal Code: {{ selectedUser.postalCode }}</p>
+      <p>City: {{ selectedUser.city }}</p>
+      <p>Country: {{ selectedUser.country }}</p>
+      <p>Role: {{ selectedUser.role }}</p>
+      <button *ngIf="isAdmin() || selectedUser?.username === currentUser?.username" (click)="onEditUser()">Edit</button>
+      <button *ngIf="isAdmin()" (click)="onDeleteUser()">Delete</button>
+    </div>
+
+    <div *ngIf="isEditingUser">
+      <label for="username">Username:</label>
+      <input id="username" [(ngModel)]="selectedUser!.username" name="username" required>
+
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" [(ngModel)]="selectedUser!.lastName" name="lastName" required>
+
+      <label for="firstName">First Name:</label>
+      <input id="firstName" [(ngModel)]="selectedUser!.firstName" name="firstName" required>
+
+      <label for="email">Email:</label>
+      <input id="email" [(ngModel)]="selectedUser!.email" name="email" required>
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input id="phoneNumber" [(ngModel)]="selectedUser!.phoneNumber" name="phoneNumber" required>
+
+      <label for="birthDate">Birth Date:</label>
+      <input id="birthDate" [(ngModel)]="selectedUser!.birthDate" name="birthDate" required>
+
+      <label for="address">Address:</label>
+      <input id="address" [(ngModel)]="selectedUser!.address" name="address" required>
+
+      <label for="addressComplement">Address Complement:</label>
+      <input id="addressComplement" [(ngModel)]="selectedUser!.addressComplement" name="addressComplement">
+
+      <label for="postalCode">Postal Code:</label>
+      <input id="postalCode" [(ngModel)]="selectedUser!.postalCode" name="postalCode" required>
+
+      <label for="city">City:</label>
+      <input id="city" [(ngModel)]="selectedUser!.city" name="city" required>
+
+      <label for="country">Country:</label>
+      <input id="country" [(ngModel)]="selectedUser!.country" name="country" required>
+
+      <label for="role">Role:</label>
+      <input id="role" [(ngModel)]="selectedUser!.role" name="role" required *ngIf="isAdmin()">
+      <p *ngIf="!isAdmin()">{{ selectedUser.role }}</p>
+
+      <button (click)="onSaveUser()">Save</button>
+    </div>
+  </div>
+</div>

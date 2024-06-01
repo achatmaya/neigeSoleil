@@ -1,0 +1,82 @@
+<div class="form-container user-profile-container">
+  <h2>Profil de l'utilisateur</h2>
+
+  <div *ngIf="currentUser" class="user-details">
+    <div *ngIf="!isEditingProfile">
+      <p><strong>Nom d'utilisateur :</strong> {{ currentUser.username }}</p>
+      <p><strong>Nom :</strong> {{ currentUser.lastName }}</p>
+      <p><strong>Prénom :</strong> {{ currentUser.firstName }}</p>
+      <p><strong>Email :</strong> {{ currentUser.email }}</p>
+      <p><strong>Numéro de téléphone :</strong> {{ currentUser.phoneNumber }}</p>
+      <p><strong>Date de naissance :</strong> {{ currentUser.birthDate }}</p>
+      <p><strong>Adresse :</strong> {{ currentUser.address }}</p>
+      <p><strong>Complément d'adresse :</strong> {{ currentUser.addressComplement }}</p>
+      <p><strong>Code postal :</strong> {{ currentUser.postalCode }}</p>
+      <p><strong>Ville :</strong> {{ currentUser.city }}</p>
+      <p><strong>Pays :</strong> {{ currentUser.country }}</p>
+      <button class="button button-primary" (click)="onEditProfile()">Modifier le profil</button>
+    </div>
+
+    <div *ngIf="isEditingProfile">
+      <div class="form-group">
+        <label for="username">Nom d'utilisateur :</label>
+        <input id="username" [(ngModel)]="currentUser.username" name="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Nom :</label>
+        <input id="lastName" [(ngModel)]="currentUser.lastName" name="lastName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">Prénom :</label>
+        <input id="firstName" [(ngModel)]="currentUser.firstName" name="firstName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email :</label>
+        <input id="email" [(ngModel)]="currentUser.email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phoneNumber">Numéro de téléphone :</label>
+        <input id="phoneNumber" [(ngModel)]="currentUser.phoneNumber" name="phoneNumber" required>
+      </div>
+
+      <div class="form-group">
+        <label for="birthDate">Date de naissance :</label>
+        <input id="birthDate" [(ngModel)]="currentUser.birthDate" name="birthDate" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Adresse :</label>
+        <input id="address" [(ngModel)]="currentUser.address" name="address" required>
+      </div>
+
+      <div class="form-group">
+        <label for="addressComplement">Complément d'adresse :</label>
+        <input id="addressComplement" [(ngModel)]="currentUser.addressComplement">
+      </div>
+
+      <div class="form-group">
+        <label for="postalCode">Code postal :</label>
+        <input id="postalCode" [(ngModel)]="currentUser.postalCode" name="postalCode" required>
+      </div>
+
+      <div class="form-group">
+        <label for="city">Ville :</label>
+        <input id="city" [(ngModel)]="currentUser.city" name="city" required>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Pays :</label>
+        <input id="country" [(ngModel)]="currentUser.country" name="country" required>
+      </div>
+
+      <div class="button-group">
+        <button class="button button-primary" (click)="onSaveProfile()">Enregistrer</button>
+        <button class="button button-danger" (click)="onCancelEdit()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

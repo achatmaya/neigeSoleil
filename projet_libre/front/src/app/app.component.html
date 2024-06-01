@@ -1,0 +1,24 @@
+<div class="main-container">
+  <header>
+    <div class="container-header">
+      <div class="logo pointer" routerLink="/" >Neige et Soleil</div>
+      <nav>
+        <ng-container *ngIf="currentUser; else guestLinks">
+          <button *ngIf="authService.asRoleAsync('ROLE_OWNER')" class="button button mr-2" routerLink="/new">Ajouter un appartement</button>
+          <button *ngIf="authService.asRoleAsync('ROLE_ADMIN')" class="button button" routerLink="/new">Admin</button>
+          <div class="profile">
+            <button  class="button button mr-2" routerLink="/reservations">Voir mes Réservations</button>
+            <button class="login-button mr-2" routerLink="/profil">{{currentUser.username}}</button>
+            <button class="logout-button" (click)="onLogout()">Logout</button>
+          </div>
+        </ng-container>
+        <ng-template #guestLinks>
+          <button class="login-button" routerLink="/login">Login</button>
+        </ng-template>
+      </nav>
+    </div>
+  </header>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

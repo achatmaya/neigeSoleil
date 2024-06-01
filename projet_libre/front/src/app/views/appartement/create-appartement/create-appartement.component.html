@@ -1,0 +1,88 @@
+<div class="apartment-form-container">
+  <h2>Création d'un nouvel appartement</h2>
+  <form (ngSubmit)="onSubmit()" class="apartment-form" #apartmentForm="ngForm">
+    <div class="form-group" [ngClass]="{'has-error': code.invalid && (code.dirty || code.touched)}">
+      <label for="code">Code: <span class="required">*</span></label>
+      <input type="text" class="form-control" id="code" name="code" [(ngModel)]="apartment.code" required #code="ngModel">
+      <div *ngIf="code.invalid && (code.dirty || code.touched)" class="text-danger">
+        Le code est obligatoire.
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': buildingNumber.invalid && (buildingNumber.dirty || buildingNumber.touched)}">
+      <label for="buildingNumber">Numéro de bâtiment: <span class="required">*</span></label>
+      <input type="text" class="form-control" id="buildingNumber" name="buildingNumber" [(ngModel)]="apartment.buildingNumber" required #buildingNumber="ngModel">
+      <div *ngIf="buildingNumber.invalid && (buildingNumber.dirty || buildingNumber.touched)" class="text-danger">
+        Le numéro de bâtiment est obligatoire.
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': apartmentNumber.invalid && (apartmentNumber.dirty || apartmentNumber.touched)}">
+      <label for="apartmentNumber">Numéro d'appartement: <span class="required">*</span></label>
+      <input type="text" class="form-control" id="apartmentNumber" name="apartmentNumber" [(ngModel)]="apartment.apartmentNumber" required #apartmentNumber="ngModel">
+      <div *ngIf="apartmentNumber.invalid && (apartmentNumber.dirty || apartmentNumber.touched)" class="text-danger">
+        Le numéro d'appartement est obligatoire.
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': address.invalid && (address.dirty || address.touched)}">
+      <label for="address">Adresse: <span class="required">*</span></label>
+      <input type="text" class="form-control" id="address" name="address" [(ngModel)]="apartment.address" required #address="ngModel">
+      <div *ngIf="address.invalid && (address.dirty || address.touched)" class="text-danger">
+        L'adresse est obligatoire.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="addressComplement">Complément d'adresse:</label>
+      <input type="text" class="form-control" id="addressComplement" name="addressComplement" [(ngModel)]="apartment.addressComplement">
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': postalCode.invalid && (postalCode.dirty || postalCode.touched)}">
+      <label for="postalCode">Code postal: <span class="required">*</span></label>
+      <input type="text" class="form-control" id="postalCode" name="postalCode" [(ngModel)]="apartment.postalCode" required #postalCode="ngModel">
+      <div *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)" class="text-danger">
+        Le code postal est obligatoire.
+      </div>
+    </div>
+    <div class="form-group" [ngClass]="{'has-error': country.invalid && (country.dirty || country.touched)}">
+      <label for="country">Pays: <span class="required">*</span></label>
+      <input type="text" class="form-control" id="country" name="country" [(ngModel)]="apartment.country" required #country="ngModel">
+      <div *ngIf="country.invalid && (country.dirty || country.touched)" class="text-danger">
+        Le pays est obligatoire.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="floor">Étage:</label>
+      <input type="number" class="form-control" id="floor" name="floor" [(ngModel)]="apartment.floor">
+    </div>
+    <div class="form-group">
+      <label for="additionalInfo">Informations supplémentaires:</label>
+      <textarea class="form-control" id="additionalInfo" name="additionalInfo" [(ngModel)]="apartment.additionalInfo"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="apartmentType">Type d'appartement:</label>
+      <input type="text" class="form-control" id="apartmentType" name="apartmentType" [(ngModel)]="apartment.apartmentType">
+    </div>
+    <div class="form-group">
+      <label for="area">Surface:</label>
+      <input type="number" class="form-control" id="area" name="area" [(ngModel)]="apartment.area">
+    </div>
+    <div class="form-group">
+      <label for="exposure">Exposition:</label>
+      <input type="text" class="form-control" id="exposure" name="exposure" [(ngModel)]="apartment.exposure">
+    </div>
+    <div class="form-group">
+      <label for="capacity">Capacité:</label>
+      <input type="number" class="form-control" id="capacity" name="capacity" [(ngModel)]="apartment.capacity">
+    </div>
+    <div class="form-group">
+      <label for="distanceToSlope">Distance à la piste:</label>
+      <input type="number" class="form-control" id="distanceToSlope" name="distanceToSlope" [(ngModel)]="apartment.distanceToSlope">
+    </div>
+    <div class="form-group">
+      <label for="capacity">Montant:</label>
+      <input type="number" class="form-control" id="Amount" name="Amount" [(ngModel)]="apartment.Amount">
+    </div>
+    <div class="form-group">
+      <label for="photos">Photos:</label>
+      <input type="file" class="form-control" id="photos" (change)="onFileSelected($event)" multiple>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!apartmentForm.valid">Créer</button>
+  </form>
+</div>

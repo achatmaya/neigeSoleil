@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>Update Appartement</h2>
+<mat-dialog-content>
+  <form #updateForm="ngForm">
+    <div class="form-group">
+      <label for="code">Code:</label>
+      <input type="text" class="form-control" id="code" name="code" [(ngModel)]="apartment.code">
+    </div>
+    <div class="form-group">
+      <label for="buildingNumber">Numéro de bâtiment:</label>
+      <input type="text" class="form-control" id="buildingNumber" name="buildingNumber" [(ngModel)]="apartment.buildingNumber">
+    </div>
+    <div class="form-group">
+      <label for="apartmentNumber">Numéro d'appartement:</label>
+      <input type="text" class="form-control" id="apartmentNumber" name="apartmentNumber" [(ngModel)]="apartment.apartmentNumber">
+    </div>
+    <div class="form-group">
+      <label for="address">Adresse:</label>
+      <input type="text" class="form-control" id="address" name="address" [(ngModel)]="apartment.address">
+    </div>
+    <div class="form-group">
+      <label for="addressComplement">Complément d'adresse:</label>
+      <input type="text" class="form-control" id="addressComplement" name="addressComplement" [(ngModel)]="apartment.addressComplement">
+    </div>
+    <div class="form-group">
+      <label for="postalCode">Code postal:</label>
+      <input type="text" class="form-control" id="postalCode" name="postalCode" [(ngModel)]="apartment.postalCode">
+    </div>
+    <div class="form-group">
+      <label for="country">Pays:</label>
+      <input type="text" class="form-control" id="country" name="country" [(ngModel)]="apartment.country">
+    </div>
+    <div class="form-group">
+      <label for="floor">Étage:</label>
+      <input type="number" class="form-control" id="floor" name="floor" [(ngModel)]="apartment.floor">
+    </div>
+    <div class="form-group">
+      <label for="area">Surface (m²):</label>
+      <input type="number" class="form-control" id="area" name="area" [(ngModel)]="apartment.area">
+    </div>
+    <div class="form-group">
+      <label for="capacity">Capacité:</label>
+      <input type="number" class="form-control" id="capacity" name="capacity" [(ngModel)]="apartment.capacity">
+    </div>
+    <div class="form-group">
+      <label for="distanceToSlope">Distance à la pente (m):</label>
+      <input type="number" class="form-control" id="distanceToSlope" name="distanceToSlope" [(ngModel)]="apartment.distanceToSlope">
+    </div>
+    <div class="form-group">
+      <label for="apartmentType">Type d'appartement:</label>
+      <input type="text" class="form-control" id="apartmentType" name="apartmentType" [(ngModel)]="apartment.apartmentType">
+    </div>
+    <div class="form-group">
+      <label for="additionalInfo">Informations supplémentaires:</label>
+      <textarea class="form-control" id="additionalInfo" name="additionalInfo" [(ngModel)]="apartment.additionalInfo"></textarea>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button (click)="onUpdate()">Mettre à jour</button>
+</mat-dialog-actions>

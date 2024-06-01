@@ -1,0 +1,18 @@
+<div *ngIf="apartment" class="view-apartment-container">
+  <div class="apartment-images">
+    <div *ngFor="let imageUrl of getImageUrls(apartment.imageUrls)" class="apartment-image" [style.background-image]="'url(' + imageUrl + ')'"></div>
+  </div>
+  <div class="apartment-details">
+    <h2>{{ apartment.apartmentType }}</h2>
+    <p><strong>Adresse:</strong> {{ apartment.address }}</p>
+    <p><strong>Complément d'adresse:</strong> {{ apartment.addressComplement }}</p>
+    <p><strong>Code postal:</strong> {{ apartment.postalCode }}</p>
+    <p><strong>Pays:</strong> {{ apartment.country }}</p>
+    <p><strong>Étage:</strong> {{ apartment.floor }}</p>
+    <p><strong>Surface:</strong> {{ apartment.area }} m²</p>
+    <p><strong>Capacité:</strong> {{ apartment.capacity }} personnes</p>
+    <p><strong>Distance à la pente:</strong> {{ apartment.distanceToSlope }} m</p>
+    <p><strong>Informations supplémentaires:</strong> {{ apartment.additionalInfo }}</p>
+    <button *ngIf="authService.asRoleAsync('ROLE_USER')" class="button button-success" (click)="openCreateReservationModal(apartment)">Réserver</button>
+  </div>
+</div>
