@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: quest_web
+      MYSQL_USER: quest_web
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - projet_libre_network
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql-db
+      PMA_USER: quest_web
+      PMA_PASSWORD: root
+      PMA_PORT: 3306
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql-db
+    networks:
+      - projet_libre_network
+    restart: always
+
+  api:
+    image: projet_libre-api
+    build:
+      context: .
+      dockerfile: quest_web_dotnet/Dockerfile
+    ports:
+      - "8090:80"
+    depends_on:
+      - mysql-db
+    networks:
+      - projet_libre_network
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    restart: always
+    command: ["sh", "-c", "until dotnet ef database update; do echo 'Waiting for db to be ready...'; sleep 5; done && dotnet quest_web.dll"]
+
+networks:
+  projet_libre_network:
+
+volumes:
+  mysql-data:
