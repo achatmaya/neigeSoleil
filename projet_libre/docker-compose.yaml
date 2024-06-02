@@ -13,6 +13,11 @@ services:
     networks:
       - projet_libre_network
     restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p${MYSQL_ROOT_PASSWORD} || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -35,15 +40,16 @@ services:
       context: .
       dockerfile: quest_web_dotnet/Dockerfile
     ports:
-      - "8090:80"
+      - "8091:80"
     depends_on:
-      - mysql-db
+      mysql-db:
+        condition: service_healthy
     networks:
       - projet_libre_network
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     restart: always
-    command: ["sh", "-c", "until dotnet ef database update; do echo 'Waiting for db to be ready...'; sleep 5; done && dotnet quest_web.dll"]
+    command: ["sh", "-c", "dotnet ef database update && dotnet quest_web.dll"]
 
 networks:
   projet_libre_network:

@@ -19,5 +19,4 @@ COPY --from=build /app/publish .
 
 RUN ls /app  # Vérifiez le contenu du répertoire après la copie
 
-# Exécutez les migrations avant de démarrer l'application
-ENTRYPOINT ["sh", "-c", "dotnet quest_web.dll"]
+ ENTRYPOINT ["sh", "-c", "dotnet quest_web.dll"]
