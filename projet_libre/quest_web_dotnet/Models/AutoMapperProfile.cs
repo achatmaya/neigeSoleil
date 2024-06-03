@@ -19,11 +19,10 @@ public class AutoMapperProfile : Profile
         CreateMap<Reservation, ReservationWithUserDto>();
         CreateMap<Reservation, ReservationWithApartmentDto>();
         CreateMap<Reservation, ReservationWithUserAndApartmentDto>();
-        CreateMap<ReservationUpdateModel, Reservation>();
-
+        CreateMap<ReservationUpdateModel, Reservation>();   
         CreateMap<Equipment, EquipmentDto>();
         CreateMap<Equipment, EquipmentWithApartmentDto>();
         CreateMap<EquipmentUpdateModel, Equipment>();
-
     }
 }
+
